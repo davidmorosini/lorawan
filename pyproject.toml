@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "py2solve-lorawan-decoders"
+version = "0.0.1"
+description = "Py2Solve Lorawan Decoders"
+authors = ["David Morosini de Assumpcao <david.morosinineto@gmail.com>"]
+packages = [
+  { include = "py2Solve"}
+]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4"
+
+[tool.poetry.dev-dependencies]
+pytest = ">=7.1.2,<8.0"
+pytest-cov = ">=3.0.0,<4.0"
+pytest-mock = ">=3.8.2,<4.0"
+black = ">=22.6.0,<23.0"
+autoflake = ">=1.4,<2.0"
+isort = ">=5.10.1,<6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310']
+extend-exclude = '''
+/(
+  # Excluded by Black
+  | .venv
+  | venv
+  | .pytest_cache
+)/
+'''
+
+[tool.isort]
+py_version = "all"
+profile = "black"
+line_length = 100
+only_modified = true
+overwrite_in_place = true
+skip_glob = [".pytest_cache/*", ".venv/*", "venv/*"]
